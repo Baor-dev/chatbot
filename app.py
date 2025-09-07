@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from flask_bcrypt import Bcrypt
 from groq import Groq  # Sử dụng Groq API
+from flask_cors import CORS
 
 # --- App Configuration ---
 app = Flask(__name__)
@@ -22,6 +23,8 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login_page'
+
+CORS(app)
 
 # --- Groq Client Initialization ---
 # API key sẽ được đọc từ biến môi trường của server hosting
