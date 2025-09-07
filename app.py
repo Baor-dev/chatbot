@@ -58,6 +58,8 @@ class Conversation(db.Model):
     title = db.Column(db.String(200), nullable=True)  # Tiêu đề tùy chỉnh sau khi rename
     messages = db.Column(db.Text, nullable=False, default='[]')  # Lưu tin nhắn dạng JSON string
 
+with app.app_context():
+    db.create_all()
 
 # --- Flask-Login User Loader ---
 @login_manager.user_loader
@@ -266,6 +268,4 @@ def delete_conversation(conv_id):
 
 # --- Main execution ---
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(host="127.0.0.1", port=5000, debug=True)
