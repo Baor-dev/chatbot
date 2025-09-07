@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VWA Chat</title>
+
+  <!-- Google Material Symbols for Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Link to your stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark"> <!-- Default to dark mode -->
+
+  <!-- Authentication Container (Visible when logged out) -->
+  <div id="auth-container" class="auth-wrapper">
+    <div class="auth-box">
+      <!-- Login Form -->
+      <form id="login-form">
+        <h2 class="auth-title">Login</h2>
+        <div class="input-group">
+          <input type="text" id="login-username" placeholder="Username" required autocomplete="username">
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="auth-button">Login</button>
+        <p class="auth-switch">Don't have an account? <a href="#" id="show-register-link">Register</a></p>
+      </form>
+
+      <!-- Registration Form (Initially hidden) -->
+      <form id="register-form" style="display: none;">
+        <h2 class="auth-title">Register</h2>
+        <div class="input-group">
+          <input type="text" id="register-username" placeholder="Username" required autocomplete="username">
+        </div>
+        <div class="input-group">
+          <input type="password" id="register-password" placeholder="Password (min. 6 characters)" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="auth-button">Register</button>
+        <p class="auth-switch">Already have an account? <a href="#" id="show-login-link">Login</a></p>
+      </form>
+
+      <!-- Area for showing login/register error messages -->
+      <p id="auth-message-area" class="auth-message"></p>
+    </div>
+  </div>
+
+  <!-- Main App Container (Initially hidden, shown after login) -->
+  <div id="app-container" style="display: none;">
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <h1 class="sidebar-title">VWA Chat</h1>
+      </header>
+      <nav class="sidebar-nav">
+        <button id="newChatBtn" class="sidebar-button">
+          <span class="icon"><span class="material-symbols-outlined">add</span></span>
+          <span class="text">New Chat</span>
+        </button>
+        <div id="historyContainer" class="history-container"></div>
+      </nav>
+      <footer class="sidebar-footer">
+        <button id="toggleDarkBtn" class="sidebar-button">
+          <span class="icon"><span class="material-symbols-outlined">brightness_6</span></span>
+          <span class="text">Toggle Theme</span>
+        </button>
+        <!-- User Info and Logout Button -->
+        <div id="user-info-container" class="user-info">
+            <span id="username-display" class="username"></span>
+            <button id="logout-btn" class="logout-button" title="Logout">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+      </footer>
+    </aside>
+
+    <main class="main">
+      <div id="chatBox" class="chat-box"></div>
+      <div id="newChatPrompt" class="new-chat-prompt">
+        <h2 class="prompt-title">Xin chào</h2>
+        <p>Start a new conversation</p>
+      </div>
+      <div class="input-area" id="chatInputArea">
+        <input id="userInput" class="input-field" placeholder="Type your message..." autocomplete="off"/>
+        <button id="sendBtn" class="send-button" title="Send Message">
+          <span class="material-symbols-outlined">arrow_upward</span>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Link to your JavaScript file -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+

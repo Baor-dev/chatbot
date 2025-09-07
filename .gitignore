@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment folder (thay "venv" bằng tên thư mục venv của bạn nếu khác)
+venv/
+.venv/
+
+# Database file - RẤT QUAN TRỌNG
+chat_app.db
+
+# IDE configuration files
+.idea/
+.vscode/
+
+# Tệp hệ điều hành
+.DS_Store
