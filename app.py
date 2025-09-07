@@ -174,7 +174,7 @@ def chat():
     try:
         chat_completion = groq_client.chat.completions.create(
             messages=formatted_messages,
-            model="mixtral-8x7b-32768",  # Bạn có thể đổi model khác nếu muốn, ví dụ llama3-70b-8192
+            model="llama-3.1-8b-instant",  # Bạn có thể đổi model khác nếu muốn, ví dụ llama3-70b-8192
             temperature=0.7,
             max_tokens=1024,
         )
