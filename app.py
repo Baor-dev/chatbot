@@ -167,7 +167,12 @@ def chat():
         else:
             return jsonify({"error": "Conversation not found or unauthorized"}), 404
 
-    formatted_messages = [{"role": msg["sender"], "content": msg["text"]} for msg in messages_history]
+    # Định dạng lại tin nhắn cho Groq API, dịch "bot" thành "assistant"
+    formatted_messages = []
+    for msg in messages_history:
+        role = "assistant" if msg["sender"] == "bot" else "user"
+        formatted_messages.append({"role": role, "content": msg["text"]})
+
     formatted_messages.append({"role": "user", "content": user_message_text})
 
     # 2. Gọi API Groq
